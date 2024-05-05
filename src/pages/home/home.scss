@@ -1,0 +1,73 @@
+.home-main-container {
+  .details-container {
+    .my-details {
+      .profile-img {
+        border: 5px solid greenyellow;
+        border-radius: 50%;
+        overflow: hidden;
+        height: 200px;
+        width: 200px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+        }
+      }
+      .details-content {
+        button {
+          border: none;
+          padding: 5px 10px;
+          background: #1976d2;
+          border-radius: 5px;
+          color: white;
+          margin-top: 5px;
+          font-size: large;
+          font-weight: bold;
+          &:hover {
+            background: rgb(128, 3, 191);
+          }
+        }
+      }
+    }
+    .clinic-details {
+      .details-card {
+        margin: 20px 130px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        h3 {
+          color: green;
+        }
+        span {
+          color: green;
+        }
+      }
+    }
+  }
+  .analytics {
+    margin: 50px;
+    padding: 40px 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    h1 {
+      color: #1976d2;
+      font-weight: bolder;
+      margin-bottom: 20px;
+    }
+    .vl {
+      border-left: 1px solid black;
+      height: 200px;
+    }
+  }
+
+  .treatment-list {
+    margin: 50px;
+    margin-bottom: 100px;
+    .treatment-list-container {
+      grid-template-columns: repeat(
+        4,
+        1fr
+      ); // This will create 4 equal-width columns
+      gap: 30px; // Adjust the gap between items as needed
+      display: grid;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.avatar{
+    background: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    span{
+        margin: auto;
+        color:  #1976d2;
+        font-size: 20px;
+    }
+}

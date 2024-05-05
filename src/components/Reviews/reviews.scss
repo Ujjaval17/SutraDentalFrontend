@@ -1,0 +1,71 @@
+.review-container{
+    background: #efffe5;
+    .review-card{
+        background: white;
+        border-radius: 20px;
+        width: 50% !important;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        padding: 40px 60px;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),0 6px 20px 0 rgba(0, 0, 0, 0.19),0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        p{
+            display: -webkit-box;
+            max-height: 80px;
+            -webkit-line-clamp: 3; /* Adjust as needed */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            align-items: start;
+        }
+        .review-img-container{
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            padding: 5px 10px;
+            background: green;
+            h1{
+                color: white;
+            }
+        }
+    }
+}
+/* YourComponent.css */
+
+/* Style for the container of the slider */
+.slider-container {
+    position: relative; /* Ensure the container has a position value other than 'static' */
+    width: 100%; /* Set the width as needed */
+  }
+  
+  /* Style for the dots */
+  .slick-dots {
+    position: absolute;
+    bottom: 10px; /* Adjust the distance from the bottom as needed */
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Make the dots cover the entire width of the parent */
+  }
+  
+  /* Style for individual dot */
+  .slick-dots li {
+    margin: 0 5px; /* Adjust the space between dots as needed */
+  }
+  
+  /* Style for dot's indicator */
+  .slick-dots li button {
+    font-size: 16px; /* Adjust the font size as needed */
+    width: 20px; /* Set the width of each dot */
+    height: 20px; /* Set the height of each dot */
+    border-radius: 50%; /* Make the dots round */
+    background-color: #333; /* Set the background color of the dot */
+    border: 2px solid #fff; /* Set the border of the dot */
+    outline: none; /* Remove the default outline */
+    opacity: 0.7; /* Adjust the opacity of the inactive dots */
+  }
+  
+  /* Style for active dot */
+  .slick-dots li.slick-active button {
+    background-color: #fff; /* Set the background color of the active dot */
+    opacity: 1; /* Set the opacity of the active dot */
+  }
+  

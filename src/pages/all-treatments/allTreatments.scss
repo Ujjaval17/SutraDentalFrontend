@@ -1,0 +1,11 @@
+.treatment-list {
+    margin: 50px;
+    .treatment-list-container {
+      grid-template-columns: repeat(
+        4,
+        1fr
+      ); // This will create 4 equal-width columns
+      gap: 30px; // Adjust the gap between items as needed
+      display: grid;
+    }
+  }

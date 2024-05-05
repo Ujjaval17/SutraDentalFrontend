@@ -1,0 +1,22 @@
+.faqs-container{
+    background: #efffe5;
+    padding: 30px 0px;
+    .questions{
+        margin: 50px 80px;
+        .faqs-content{
+            .faqs-que{
+                background: white;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                &:hover{
+                    background:  #64bc6e;;
+                }
+            }
+            .faqs-ans{
+                background: #efffe5;
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+        }
+    }
+}

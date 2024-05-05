@@ -1,0 +1,15 @@
+.footer-container{
+    background: #0176c4;
+    color: white;
+    padding: 40px 150px;
+
+    ul {
+        list-style-type: none;
+        /* Additional styling if needed */
+        padding: 0;
+        margin: 0;
+        li{
+            font-weight: bold;
+        }
+      }
+}

@@ -1,0 +1,22 @@
+.treatment-card {
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+  border-radius: 20px;
+  &:hover {
+    transform: scale(1.1); /* Increase the scale on hover */
+  }
+  .treatment-img {
+    width: 150px; // Set your desired width
+    height: 150px; // Set your desired height
+    overflow: hidden; // Hide any content that exceeds the fixed size
+    img {
+      width: 100%; // Make the image fill the container while maintaining aspect ratio
+      height: auto; // Allow the height to adjust proportionally
+      display: block; // Remove extra space below the image due to inline elements
+      color: #64bc6e;
+    }
+  }
+}
