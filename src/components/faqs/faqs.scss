@@ -18,5 +18,14 @@
                 box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             }
         }
+        .faq-appointment-link {
+            color: #1976d2;
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+            &:hover {
+                color: #0d47a1;
+            }
+        }
     }
 }

@@ -1,0 +1,12 @@
+.step{
+width: 20px;
+border: 1px solid blue($color: #000000);
+border-radius: 50%;
+background-color: grey;
+}
+.active-step{
+    width: 20px;
+    border: 1px solid blue($color: #000000);
+    border-radius: 50%;
+    background-color: rgb(56, 56, 232);
+}

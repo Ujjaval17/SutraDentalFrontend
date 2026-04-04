@@ -13,17 +13,29 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import "./header.scss";
-import { aboutPattern, allTreatmentsPattern, blogsPattern, indexPattern } from "../../Routes";
+import { aboutPattern, adminPanelPattern, allTreatmentsPattern, blogsPattern, indexPattern, loginPattern } from "../../Routes";
 import { useNavigate } from "react-router";
+import { useLocation } from "react-router-dom";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { Navigate } from "react-router-dom";
 
 const pages = ["Home", "Treatments", "Health Blogs", "About Me"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [token, setToken] = React.useState(localStorage.getItem("token"));
+  const location = useLocation();
+
+  React.useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, [location.pathname]);
+
+  const settings = [
+    ...(token ? ["Admin Panel"] : []),
+    token ? "Logout" : "Login",
+  ];
 
   const navigate = useNavigate();
 
@@ -78,8 +90,18 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (option) => {
+    console.log("here",option,"is")
     setAnchorElUser(null);
+    if (option === "Login") {
+      navigate(loginPattern);
+    } else if (option === "Logout") {
+      localStorage.removeItem("token");
+      setToken(null);
+      navigate(loginPattern);
+    } else if (option === "Admin Panel") {
+      navigate(adminPanelPattern);
+    }
   };
 
   return (
@@ -171,7 +193,7 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings?.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={()=>handleCloseUserMenu(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

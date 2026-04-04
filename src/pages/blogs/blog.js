@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import blog1 from "../../images/blog1.jpg";
 import blog2 from "../../images/blog2.jpg";
 import blog3 from "../../images/blog3.jpg";
@@ -7,8 +7,9 @@ import { FaRegCalendarDays } from "react-icons/fa6";
 import "./blog.scss";
 import Modal from "react-modal";
 import moment from "moment";
-import { useNavigate } from "react-router";
-import { blogDetailPattern, getBlogDetailRoute } from "../../Routes";
+import { useLocation, useNavigate } from "react-router";
+import { blogDetailPattern, blogsPattern, getBlogDetailRoute } from "../../Routes";
+import axios from "axios";
 
 const Blogs = (props) => {
   const [openAddBlogModal, setOpenAddBlogModal] = useState(false);
@@ -19,32 +20,7 @@ const Blogs = (props) => {
     image: "",
     date: "",
   });
-  const [blogList, setBlogList] = useState([
-    {
-      title: "How To Combat Dental Anxiety?",
-      image: blog1,
-      shortDesc:
-        "For many of us, going to the dentist is a stressful experience. We simply avoid going to the dentist when we have dental anxiety.",
-      longDesc: "",
-      date: "Apr 9th, 2022",
-    },
-    {
-      title: "Ways To Avoid Dental Cavities",
-      image: blog2,
-      shortDesc:
-        "Although brushing and flossing are two important daily oral hygiene routines for maintaining the health of your teeth and gums, there are a few other simple things you can do to prevent tooth decay.",
-      longDesc: "",
-      date: "Apr 6th, 2022",
-    },
-    {
-      title: "Common Dental Problems:\nLets Not Ignore",
-      image: blog3,
-      shortDesc:
-        "Tooth problems are nothing less than an emergency no matter how minor or major the problem might be. Dental problems are varied and knowing how to handle them can actually go a long way in preventing long term damage.",
-      longDesc: "",
-      date: "Apr 6th, 2022",
-    },
-  ]);
+  const [blogList, setBlogList] = useState([]);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -61,23 +37,38 @@ const Blogs = (props) => {
     }
   };
 
+  const fetchBlogList = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/blog-list");
+      setBlogList(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogList();
+  }, []);
+
+  const path = useLocation()?.pathname
+
 
   return (
     <>
       <h1 className="fw-bold text-start my-5 ms-5">
         {props.page === "home" ? "Our latest blogs" : "Health blogs"}
       </h1>
-      <div className="blog-container d-flex justify-content-between mx-5 mb-5">
-        {blogList?.length && blogList?.map((item, index) => (
+      <div className="blog-container mx-5 mb-5">
+        {blogList?.length ? (props.page === "home" ? blogList?.filter((element,i)=> i< 4)?.map((item, index) => (
           <div className="blog-card w-100" onClick={()=> navigate(getBlogDetailRoute(item?.title?.trim()),{state:item})}>
             <div className="blog-img-container">
-              <img src={item?.image} alt="" />
+              <img src={item?.image_url} alt="" />
             </div>
             <div className="blog-content">
               <h4 className="text-start" style={{ whiteSpace: "pre-line" }}>
                 {item?.title}
               </h4>
-              <p className="text-start">{item?.shortDesc}</p>
+              <p className="text-start">{item?.short_desc}</p>
             </div>
             <hr />
             <div className="d-flex read-more justify-content-between">
@@ -90,10 +81,32 @@ const Blogs = (props) => {
               </span>
             </div>
           </div>
-        ))}
+        )) : blogList?.map((item, index) => (
+          <div className="blog-card w-100" onClick={()=> navigate(getBlogDetailRoute(item?.title?.trim()),{state:item})}>
+            <div className="blog-img-container">
+              <img src={item?.image_url} alt="" />
+            </div>
+            <div className="blog-content">
+              <h4 className="text-start" style={{ whiteSpace: "pre-line" }}>
+                {item?.title}
+              </h4>
+              <p className="text-start">{item?.short_desc}</p>
+            </div>
+            <hr />
+            <div className="d-flex read-more justify-content-between">
+              <span className="">
+                Read more <FaArrowRightLong />
+              </span>
+              <span className="d-flex align-items-center gap-2">
+                <FaRegCalendarDays />
+                {item?.date}
+              </span>
+            </div>
+          </div>
+        )) ) : <p>No Blogs Available</p>}
       </div>
       <div className="addBlog my-5">
-        <button onClick={() => setOpenAddBlogModal(true)}>Add new blog</button>
+        { path === "/blogs" ? <></> : <button onClick={()=> navigate(blogsPattern)}>See more blogs</button>}
       </div>
       <Modal
         isOpen={openAddBlogModal}

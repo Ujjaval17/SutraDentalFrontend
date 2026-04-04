@@ -1,15 +1,32 @@
-.footer-container{
-    background: #0176c4;
-    color: white;
-    padding: 40px 150px;
+.footer-container {
+  background: black;
+  color: white;
+  padding: 40px 150px;
 
-    ul {
-        list-style-type: none;
-        /* Additional styling if needed */
-        padding: 0;
-        margin: 0;
-        li{
-            font-weight: bold;
-        }
-      }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li {
+      font-weight: bold;
+    }
+  }
+
+  .footer-link {
+    cursor: pointer;
+    transition: color 0.2s;
+    &:hover {
+      color: #90caf9;
+    }
+  }
+
+  .footer-email {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: #90caf9;
+      text-decoration: underline;
+    }
+  }
 }

@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./faqs.scss";
 
 const Faqs = () => {
+  const navigate = useNavigate();
+
+  const scrollToAppointment = (e) => {
+    e.stopPropagation();
+    const el = document.getElementById("appointment");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/", { state: { scrollTo: "appointment" } });
+    }
+  };
+
   const [faqsList, setFaqslist] = useState([
     {
       id: 1,
@@ -22,7 +35,7 @@ const Faqs = () => {
     {
       id: 3,
       question: "How can I book an appointment with Dr. Khushbu Singh?",
-      answer: "You can book an appointment by clicking here.",
+      answer: null,
       showAnswer: false,
     },
     {
@@ -81,7 +94,22 @@ const Faqs = () => {
                   toggleAnswer(index);
                 }}
               >
-                <span className="text-start">{item?.answer}</span>
+                <span className="text-start">
+                  {item.id === 3 ? (
+                    <>
+                      You can book an appointment by{" "}
+                      <span
+                        onClick={scrollToAppointment}
+                        className="faq-appointment-link"
+                      >
+                        clicking here
+                      </span>
+                      .
+                    </>
+                  ) : (
+                    item?.answer
+                  )}
+                </span>
               </div>
             )}
           </div>

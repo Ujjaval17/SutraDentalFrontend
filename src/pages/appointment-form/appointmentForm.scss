@@ -1,0 +1,106 @@
+.appointment-container {
+  position: relative;
+  background: url("../../images/home/book-appointment-bg.png") no-repeat center
+    center;
+  background-size: cover;
+  padding: 4rem 2rem;
+  color: white;
+
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  .appointment-loader-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    backdrop-filter: blur(2px);
+  }
+
+  .appointment-spinner {
+    width: 52px;
+    height: 52px;
+    border: 5px solid #e0e0e0;
+    border-top-color: #004aad;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .appointment-form-container {
+    max-width: 720px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    font-family: "Segoe UI", sans-serif;
+
+    h2 {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #004aad;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: 500;
+      color: #333;
+      text-align: left;
+      display: block;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      transition: border 0.3s ease-in-out;
+
+      &:focus {
+        border-color: #004aad;
+        box-shadow: none;
+      }
+    }
+
+    input[type="date"],
+    input[type="time"] {
+      cursor: pointer;
+
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+      }
+    }
+
+    button {
+      font-size: 1.1rem;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .book-btn--disabled {
+      background-color: #e0e0e0 !important;
+      border-color: #e0e0e0 !important;
+      color: #bdbdbd !important;
+      pointer-events: none;
+    }
+
+    .confirmation-msg {
+      color: #28a745;
+      font-weight: 500;
+    }
+  }
+}

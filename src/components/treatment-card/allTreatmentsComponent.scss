@@ -1,0 +1,23 @@
+.treatment-list {
+  margin: 50px;
+  .treatment-list-container {
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); // This will create 4 equal-width columns
+    gap: 30px; // Adjust the gap between items as needed
+    display: grid;
+  }
+  .see-more-treatments {
+    button {
+      border: none;
+      padding: 20px 40px;
+      border-radius: 10px;
+      background: #0176c4;
+      color: white;
+      &:hover {
+        background: rgb(128, 3, 191);
+      }
+    }
+  }
+}

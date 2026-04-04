@@ -35,3 +35,8 @@ export const treatmentDetailPattern = "/treatments/:slug";
 export const getTreatmentDetailRoute = (slug) => {
     return generatePath(treatmentDetailPattern,{slug});
 };
+
+export const loginPattern = "/login";
+export const getLoginRoute = () => {
+    return generatePath(loginPattern);
+};
