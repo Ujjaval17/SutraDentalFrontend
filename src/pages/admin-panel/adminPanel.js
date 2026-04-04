@@ -338,7 +338,7 @@ const AdminPanel = () => {
     fetchBlogList();
     fetchFaqList();
     fetchClinicDetails();
-    let temp = clinicDetails;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

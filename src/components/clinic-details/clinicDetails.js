@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import "./clinicDetails.scss";
-import moment from "moment";
 import axios from 'axios';
 import API from '../../config';
 

@@ -16,7 +16,7 @@ const BlogDetail = () => {
           {blogData?.date}
         </div>
         <div className="blog-detail-img-container m-auto">
-          <img src={blogData?.image_url} />
+          <img src={blogData?.image_url} alt={blogData?.title} />
         </div>
         <div className="blog-content mx-auto mt-5">
           <p>{blogData?.long_desc}</p>

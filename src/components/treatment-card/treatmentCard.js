@@ -1,7 +1,7 @@
 import React from 'react';
 import "./treatmentCard.scss"
 import { useNavigate } from 'react-router';
-import { getTreatmentDetailRoute, treatmentDetailPattern } from '../../Routes';
+import { getTreatmentDetailRoute } from '../../Routes';
 
 const TreatmentCard = (props) => {
     console.log(props.treatment,"hello treatment")

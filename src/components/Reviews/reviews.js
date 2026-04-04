@@ -18,12 +18,6 @@ const Reviews = () => {
     autoplaySpeed: 3000,
   };
 
-  const slideData = [
-    { title: "hello", subtitle: "hi" },
-    { title: "hello1", subtitle: "hi1" },
-    // Add more slide data as needed
-  ];
-
   const googleReviews = [
     {
       name: "Mandar Gaikwad",
@@ -72,7 +66,7 @@ const Reviews = () => {
             </div>
             <div className="review-img-container d-flex justify-content-center align-items-center mx-auto my-4">
                 {
-                    item?.image ? <img/> : <h1 className="m-auto">{item?.name[0]}</h1>
+                    item?.image ? <img src={item.image} alt={item.name} /> : <h1 className="m-auto">{item?.name[0]}</h1>
                 }
             </div>
             <h4 className="mx-auto">{item?.name}</h4>

@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import blog1 from "../../images/blog1.jpg";
-import blog2 from "../../images/blog2.jpg";
-import blog3 from "../../images/blog3.jpg";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaRegCalendarDays } from "react-icons/fa6";
 import "./blog.scss";
 import Modal from "react-modal";
 import moment from "moment";
 import { useLocation, useNavigate } from "react-router";
-import { blogDetailPattern, blogsPattern, getBlogDetailRoute } from "../../Routes";
+import { blogsPattern, getBlogDetailRoute } from "../../Routes";
 import axios from "axios";
 import API from "../../config";
 

@@ -38,6 +38,7 @@ const Login = () => {
     if (token) {
       navigate(adminPanelPattern);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -3,7 +3,6 @@ import TreatmentCard from "../../components/treatment-card/treatmentCard";
 import axios from "axios";
 import API from "../../config";
 import "./allTreatmentsComponent.scss";
-import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router";
 import { allTreatmentsPattern } from "../../Routes";
 
