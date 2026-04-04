@@ -10,6 +10,7 @@ import moment from "moment";
 import { useLocation, useNavigate } from "react-router";
 import { blogDetailPattern, blogsPattern, getBlogDetailRoute } from "../../Routes";
 import axios from "axios";
+import API from "../../config";
 
 const Blogs = (props) => {
   const [openAddBlogModal, setOpenAddBlogModal] = useState(false);
@@ -39,7 +40,7 @@ const Blogs = (props) => {
 
   const fetchBlogList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/blog-list");
+      const response = await axios.get(`${API}/blog-list`);
       setBlogList(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);

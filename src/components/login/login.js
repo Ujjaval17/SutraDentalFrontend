@@ -1,6 +1,7 @@
 // src/components/Login.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../config";
 import "./login.scss";
 import { useNavigate } from "react-router";
 import { adminPanelPattern } from "../../Routes";
@@ -17,7 +18,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post(`${API}/login`, {
         username,
         password,
       });

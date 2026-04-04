@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./clinicDetails.scss";
 import moment from "moment";
 import axios from 'axios';
+import API from '../../config';
 
 const ClinicDetails = () => {
   const [clinicDetails, setClinicDetails] = useState(null);
@@ -9,7 +10,7 @@ const ClinicDetails = () => {
   useEffect(() => {
     const fetchClinicDetails = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/clinic-details');
+        const response = await axios.get(`${API}/api/clinic-details`);
         setClinicDetails(response.data);
       } catch (error) {
         console.error('Error fetching clinic details:', error);

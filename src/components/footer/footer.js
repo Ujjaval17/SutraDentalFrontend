@@ -3,6 +3,7 @@ import "./footer.scss";
 import { IoLocationSharp, IoMailSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API from "../../config";
 import {
   aboutPattern,
   allTreatmentsPattern,
@@ -16,7 +17,7 @@ const Footer = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/list")
+      .get(`${API}/list`)
       .then((res) => setTreatmentsList(res.data))
       .catch(() => {});
   }, []);

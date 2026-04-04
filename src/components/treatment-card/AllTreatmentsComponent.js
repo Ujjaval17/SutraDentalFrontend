@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TreatmentCard from "../../components/treatment-card/treatmentCard";
 import axios from "axios";
+import API from "../../config";
 import "./allTreatmentsComponent.scss";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router";
@@ -12,7 +13,7 @@ const AllTreatmentsComponent = ({ isDashboard }) => {
 
   const fetchTreatmentList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/list");
+      const response = await axios.get(`${API}/list`);
       setTreatmentList(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);

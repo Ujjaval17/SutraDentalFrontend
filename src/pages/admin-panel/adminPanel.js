@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API from "../../config";
 import "./adminPanel.scss"; // Assuming you have a CSS file for styling
 import EditModal from "../../components/edit-modal/editModal";
 import EditFaqModal from "../../components/edit-modal/editFaqModal";
@@ -27,7 +28,7 @@ const AdminPanel = () => {
 
   const fetchTreatmentList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/list");
+      const response = await axios.get(`${API}/list`);
       setTreatmentList(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -36,7 +37,7 @@ const AdminPanel = () => {
 
   const handleRemove = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/delete-treatment/${id}`);
+      await axios.delete(`${API}/delete-treatment/${id}`);
       const updatedList = treatmentList.filter(
         (treatment) => treatment._id !== id
       );
@@ -49,7 +50,7 @@ const AdminPanel = () => {
 
   const handleRemoveBlog = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/delete-blog/${id}`);
+      await axios.delete(`${API}/delete-blog/${id}`);
       const updatedList = blogList.filter((blog) => blog._id !== id);
       setBlogList(updatedList);
       console.log("Blog deleted successfully");
@@ -60,7 +61,7 @@ const AdminPanel = () => {
 
   const handleRemoveFaq = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/delete-faq/${id}`);
+      await axios.delete(`${API}/delete-faq/${id}`);
       const updatedList = faqList.filter((faq) => faq._id !== id);
       setFaqList(updatedList);
       console.log("Faq deleted successfully");
@@ -162,7 +163,7 @@ const AdminPanel = () => {
       let response;
       if (addMode) {
         response = await axios.post(
-          "http://localhost:5000/add-treatment",
+          `${API}/add-treatment`,
           formData,
           {
             headers: {
@@ -172,7 +173,7 @@ const AdminPanel = () => {
         );
       } else {
         response = await axios.put(
-          `http://localhost:5000/treatment-update/${updatedTreatment._id}`,
+          `${API}/treatment-update/${updatedTreatment._id}`,
           formData,
           {
             headers: {
@@ -204,7 +205,7 @@ const AdminPanel = () => {
       let response;
       if (addMode) {
         response = await axios.post(
-          "http://localhost:5000/add-blog",
+          `${API}/add-blog`,
           formData,
           {
             headers: {
@@ -214,7 +215,7 @@ const AdminPanel = () => {
         );
       } else {
         response = await axios.put(
-          `http://localhost:5000/blog-update/${updatedBlog._id}`,
+          `${API}/blog-update/${updatedBlog._id}`,
           formData,
           {
             headers: {
@@ -239,7 +240,7 @@ const AdminPanel = () => {
       let response;
       if (addMode) {
         response = await axios.post(
-          "http://localhost:5000/add-faq",
+          `${API}/add-faq`,
           updatedFaq,
           {
             headers: {
@@ -249,7 +250,7 @@ const AdminPanel = () => {
         );
       } else {
         response = await axios.put(
-          `http://localhost:5000/faq-update/${updatedFaq._id}`,
+          `${API}/faq-update/${updatedFaq._id}`,
           updatedFaq
         );
       }
@@ -272,7 +273,7 @@ const AdminPanel = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/clinic-details-update/${updatedClinicDetails._id}`,
+        `${API}/clinic-details-update/${updatedClinicDetails._id}`,
         formData,
         {
           headers: {
@@ -308,7 +309,7 @@ const AdminPanel = () => {
 
   const fetchBlogList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/blog-list");
+      const response = await axios.get(`${API}/blog-list`);
       setBlogList(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -317,7 +318,7 @@ const AdminPanel = () => {
 
   const fetchFaqList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/faq-list");
+      const response = await axios.get(`${API}/faq-list`);
       setFaqList(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -326,7 +327,7 @@ const AdminPanel = () => {
 
   const fetchClinicDetails = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/clinic-details");
+      const response = await axios.get(`${API}/api/clinic-details`);
       setClinicDetails(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
