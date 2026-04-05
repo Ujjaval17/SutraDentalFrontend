@@ -31,7 +31,7 @@ const Banner = () => {
             <p className="banner-description">
               The Sutra of your smile
               <br />
-              Because Your Smile Deserves Luxury
+              Because your smile deserves luxury
             </p>
           </div>
         </div>
