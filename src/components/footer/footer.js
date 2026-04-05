@@ -34,34 +34,41 @@ const Footer = () => {
 
   return (
     <div className="footer-container">
-      <div className="d-flex justify-content-between gap-5">
+      <div className="footer-columns">
         <div className="w-100">
-          <h4 className="text-start mb-4">Contact Us</h4>
+          <h4 className="text-start mb-4 footer-title">Contact Us</h4>
           <div
             className="d-flex justify-content-between gap-3 mb-3 footer-link"
-            onClick={() => window.open("https://maps.google.com/?q=Shop+no.04+Spruti+Vihar+Near+Sai+siddhi+chowk+ambegaon+bk+Pune+411046", "_blank")}
+            onClick={() =>
+              window.open(
+                "https://maps.google.com/?q=2nd+floor+star+plaza+Ahmedabad-Mehsana+highway+Opp+sharda+petroleum+Chandkheda+Ahmedabad+382424",
+                "_blank",
+              )
+            }
           >
             <span>
               <IoLocationSharp />
             </span>
             <p className="text-start fw-bold">
-              Shop no.04 Spruti Vihar, Near Sai siddhi chowk, ambegaon bk, pune
-              411046, Near sai siddhi chowk, Raghav Nagar, Suvarnayug Nagar,
-              Pune, Maharashtra -411046
+              2nd floor, star plaza, Ahmedabad-Mehsana highway, Opp sharda
+              petroleum, Chandkheda, Ahmedabad-382424.
             </p>
           </div>
           <div className="d-flex align-items-center gap-3">
             <span>
               <IoMailSharp />
             </span>
-            <a href="mailto:dentalsutra@gmail.com" className="footer-email fw-bold">
+            <a
+              href="mailto:dentalsutra@gmail.com"
+              className="footer-email fw-bold"
+            >
               dentalsutra@gmail.com
             </a>
           </div>
         </div>
-        <div className="d-flex justify-content-between w-100">
+        <div className="footer-inner-columns">
           <div>
-            <h4 className="mb-4 text-start">Quick Links</h4>
+            <h4 className="mb-4 text-start footer-title">Quick Links</h4>
             <ul className="text-start">
               {quickLinks.map((link) => (
                 <li
@@ -75,7 +82,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="mb-4 text-start">Our Treatments</h4>
+            <h4 className="mb-4 text-start footer-title">Our Treatments</h4>
             <ul className="text-start">
               {treatmentsList.map((treatment) => (
                 <li

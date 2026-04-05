@@ -344,85 +344,36 @@ const AdminPanel = () => {
   return (
     <div className="admin-container">
       <h1>Admin Panel</h1>
-      <table className="treatment-table my-5">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Treatment ID</th>
-            <th>Treatment Name</th>
-            <th>Short Description</th>
-            <th>Long Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {treatmentList.map((treatment) => (
-            <tr key={treatment?._id}>
-              <td className="img-container">
-                <img
-                  src={treatment?.image_url}
-                  alt={treatment?.treatment_name}
-                />
-              </td>
-              <td>{treatment?._id}</td>
-              <td>{treatment?.treatment_name}</td>
-              <td>{treatment?.short_desc}</td>
-              <td>{treatment?.long_desc}</td>
-              <td className="">
-                <button onClick={() => handleEdit(treatment)}>Edit</button>
-                <button
-                  className="mt-3"
-                  onClick={() => handleRemove(treatment?._id)}
-                >
-                  Remove
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="d-flex justify-content-center">
-        <button onClick={handleAdd}>Add Treatment</button>
-      </div>
-
-      <div className="manage-blogs my-5">
-        <h3>My Blogs</h3>
+      <div className="table-responsive-wrapper">
         <table className="treatment-table my-5">
           <thead>
             <tr>
               <th>Image</th>
-              <th>Blog ID</th>
-              <th>Blog Title</th>
+              <th>Treatment ID</th>
+              <th>Treatment Name</th>
               <th>Short Description</th>
               <th>Long Description</th>
-              <th>Date</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {blogList?.map((blog) => (
-              <tr key={blog?._id}>
+            {treatmentList.map((treatment) => (
+              <tr key={treatment?._id}>
                 <td className="img-container">
-                  <img src={blog?.image_url} alt={blog?.title} />
+                  <img
+                    src={treatment?.image_url}
+                    alt={treatment?.treatment_name}
+                  />
                 </td>
-                <td>{blog?._id}</td>
-                <td>{blog?.title}</td>
-                <td>{blog?.short_desc}</td>
-                <td>{blog?.long_desc}</td>
-                <td>{blog?.date}</td>
+                <td>{treatment?._id}</td>
+                <td>{treatment?.treatment_name}</td>
+                <td>{treatment?.short_desc}</td>
+                <td>{treatment?.long_desc}</td>
                 <td className="">
-                  <button
-                    onClick={() => {
-                      handleEditBlog(blog);
-                    }}
-                  >
-                    Edit
-                  </button>
+                  <button onClick={() => handleEdit(treatment)}>Edit</button>
                   <button
                     className="mt-3"
-                    onClick={() => {
-                      handleRemoveBlog(blog?._id);
-                    }}
+                    onClick={() => handleRemove(treatment?._id)}
                   >
                     Remove
                   </button>
@@ -431,6 +382,59 @@ const AdminPanel = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="d-flex justify-content-center">
+        <button onClick={handleAdd}>Add Treatment</button>
+      </div>
+
+      <div className="manage-blogs my-5">
+        <h3>My Blogs</h3>
+        <div className="table-responsive-wrapper">
+          <table className="treatment-table my-5">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Blog ID</th>
+                <th>Blog Title</th>
+                <th>Short Description</th>
+                <th>Long Description</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {blogList?.map((blog) => (
+                <tr key={blog?._id}>
+                  <td className="img-container">
+                    <img src={blog?.image_url} alt={blog?.title} />
+                  </td>
+                  <td>{blog?._id}</td>
+                  <td>{blog?.title}</td>
+                  <td>{blog?.short_desc}</td>
+                  <td>{blog?.long_desc}</td>
+                  <td>{blog?.date}</td>
+                  <td className="">
+                    <button
+                      onClick={() => {
+                        handleEditBlog(blog);
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="mt-3"
+                      onClick={() => {
+                        handleRemoveBlog(blog?._id);
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <div className="d-flex justify-content-center">
           <button onClick={handleAddBlog}>Add Blog</button>
         </div>
@@ -438,42 +442,44 @@ const AdminPanel = () => {
 
       <div className="manage-blogs my-5">
         <h3>Faqs List</h3>
-        <table className="treatment-table my-5">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Question</th>
-              <th>Answer</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {faqList.map((faq) => (
-              <tr key={faq?._id}>
-                <td>{faq?._id}</td>
-                <td>{faq?.question}</td>
-                <td>{faq?.answer}</td>
-                <td className="">
-                  <button
-                    onClick={() => {
-                      handleEditFaq(faq);
-                    }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="mt-3"
-                    onClick={() => {
-                      handleRemoveFaq(faq?._id);
-                    }}
-                  >
-                    Remove
-                  </button>
-                </td>
+        <div className="table-responsive-wrapper">
+          <table className="treatment-table my-5">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {faqList.map((faq) => (
+                <tr key={faq?._id}>
+                  <td>{faq?._id}</td>
+                  <td>{faq?.question}</td>
+                  <td>{faq?.answer}</td>
+                  <td className="">
+                    <button
+                      onClick={() => {
+                        handleEditFaq(faq);
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="mt-3"
+                      onClick={() => {
+                        handleRemoveFaq(faq?._id);
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <div className="d-flex justify-content-center">
           <button onClick={handleAddFaq}>Add Faq</button>
         </div>
@@ -481,53 +487,55 @@ const AdminPanel = () => {
 
       <div className="manage-blogs my-5">
         <h3>Manage Clinic Details</h3>
-        <table className="treatment-table my-5">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Clinic Image</th>
-              <th>Opd hours</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr key={clinicDetails?._id}>
-                <td>{clinicDetails?.name}</td>
-                <td className="img-container">
-                  <img src={clinicDetails?.imageUrl} alt="" />
-                </td>
-                <td className="w-25">
-                  {clinicDetails?.address}
-                </td>
-                <td>
-                  <table className="w-100">
-                    <tr>
-                      <th>Day</th>
-                      <th>Hours</th>
-                    </tr>
-                    {
-                      clinicDetails?.opdHours?.map((day)=>(
-                        <tr className="m-auto">
-                          <td>
-                            {day?.day}
-                          </td>
-                          <td>
-                            {
-                              day?.opening_time + " - " + day?.closing_time
-                            }
-                          </td>
-                        </tr>
-                      ))
-                    }
-                  </table>
-                </td>
-                <td className="">
-                  <button onClick={() => {handleEditClinicDetails()}}>Edit</button>
-                </td>
+        <div className="table-responsive-wrapper">
+          <table className="treatment-table my-5">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Clinic Image</th>
+                <th>Opd hours</th>
+                <th>Actions</th>
               </tr>
-            
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+                <tr key={clinicDetails?._id}>
+                  <td>{clinicDetails?.name}</td>
+                  <td className="img-container">
+                    <img src={clinicDetails?.imageUrl} alt="" />
+                  </td>
+                  <td className="w-25">
+                    {clinicDetails?.address}
+                  </td>
+                  <td>
+                    <table className="w-100">
+                      <tr>
+                        <th>Day</th>
+                        <th>Hours</th>
+                      </tr>
+                      {
+                        clinicDetails?.opdHours?.map((day)=>(
+                          <tr className="m-auto">
+                            <td>
+                              {day?.day}
+                            </td>
+                            <td>
+                              {
+                                day?.opening_time + " - " + day?.closing_time
+                              }
+                            </td>
+                          </tr>
+                        ))
+                      }
+                    </table>
+                  </td>
+                  <td className="">
+                    <button onClick={() => {handleEditClinicDetails()}}>Edit</button>
+                  </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Edit Modal */}

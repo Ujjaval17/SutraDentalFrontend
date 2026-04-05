@@ -1,14 +1,30 @@
 .admin-container {
   padding: 20px;
 
+  @media (max-width: 576px) {
+    padding: 12px 8px;
+  }
+
+  .table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .treatment-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 600px;
 
     th,
     td {
       padding: 8px;
       border: 1px solid #ddd;
+
+      @media (max-width: 576px) {
+        padding: 6px 4px;
+        font-size: 0.85rem;
+      }
     }
 
     th {
@@ -37,6 +53,7 @@
       }
     }
   }
+
   button {
     border: none;
     padding: 5px 15px;
@@ -48,6 +65,7 @@
     }
     font-size: large;
   }
+
   .modal {
     display: flex;
     align-items: flex-start;
@@ -61,6 +79,10 @@
     background-color: rgba(0, 0, 0, 0.55);
     overflow-y: auto;
     padding: 40px 16px;
+
+    @media (max-width: 576px) {
+      padding: 20px 8px;
+    }
 
     .modal-content {
       background-color: #fff;
@@ -80,12 +102,20 @@
         background-color: #1976d2;
         border-radius: 10px 10px 0 0;
 
+        @media (max-width: 480px) {
+          padding: 14px 16px;
+        }
+
         .modal-title {
           margin: 0;
           font-size: 1.25rem;
           font-weight: 600;
           color: #fff;
           letter-spacing: 0.3px;
+
+          @media (max-width: 480px) {
+            font-size: 1rem;
+          }
         }
 
         .close {
@@ -107,6 +137,10 @@
         flex-direction: column;
         padding: 24px;
         gap: 4px;
+
+        @media (max-width: 480px) {
+          padding: 16px 12px;
+        }
       }
 
       label {
@@ -203,6 +237,11 @@
         border-radius: 6px;
         margin-bottom: 6px;
 
+        @media (max-width: 480px) {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
         .opd-day {
           font-weight: 700;
           font-size: 0.85rem;
@@ -215,6 +254,10 @@
           display: flex;
           gap: 12px;
           flex: 1;
+
+          @media (max-width: 480px) {
+            gap: 8px;
+          }
 
           .opd-time-field {
             display: flex;
@@ -234,7 +277,13 @@
               padding: 10px 10px;
               font-size: 15px;
               height: 44px;
-              min-width: 130px;
+              min-width: 100px;
+
+              @media (max-width: 480px) {
+                min-width: 80px;
+                font-size: 13px;
+                padding: 8px 6px;
+              }
 
               &::-webkit-calendar-picker-indicator {
                 cursor: pointer;
@@ -271,6 +320,6 @@
   }
 }
 
-.hours{
+.hours {
   width: 90px;
 }

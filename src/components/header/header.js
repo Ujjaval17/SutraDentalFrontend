@@ -31,7 +31,7 @@ function ResponsiveAppBar() {
 
   const settings = [
     ...(token ? ["Admin Panel"] : []),
-    token ? "Logout" : "Login",
+    token ? "Logout" : "Admin Login",
   ];
 
   const navigate = useNavigate();
@@ -141,7 +141,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages?.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => { handleCloseNavMenu(); handleNavigation(page); }}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}

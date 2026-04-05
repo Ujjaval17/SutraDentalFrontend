@@ -3,20 +3,43 @@
     0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: grid;
   place-items: center;
-  transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+  transition: transform 0.2s ease-in-out;
   border-radius: 20px;
+  padding: 10px;
+
   &:hover {
-    transform: scale(1.1); /* Increase the scale on hover */
+    transform: scale(1.05);
   }
+
   .treatment-img {
-    width: 150px; // Set your desired width
-    height: 150px; // Set your desired height
-    overflow: hidden; // Hide any content that exceeds the fixed size
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      width: 110px;
+      height: 110px;
+    }
+
+    @media (max-width: 480px) {
+      width: 80px;
+      height: 80px;
+    }
+
     img {
-      width: 100%; // Make the image fill the container while maintaining aspect ratio
-      height: auto; // Allow the height to adjust proportionally
-      display: block; // Remove extra space below the image due to inline elements
+      width: 100%;
+      height: auto;
+      display: block;
       color: #64bc6e;
+    }
+  }
+
+  .treatment-name {
+    font-size: 1rem;
+    text-align: center;
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
     }
   }
 }

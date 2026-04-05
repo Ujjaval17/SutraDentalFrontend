@@ -40,9 +40,18 @@
         span {
           color: green;
         }
+
+        @media (max-width: 992px) {
+          margin: 20px 40px;
+        }
+
+        @media (max-width: 576px) {
+          margin: 16px 12px;
+        }
       }
     }
   }
+
   .analytics {
     margin: 50px;
     padding: 40px 60px;
@@ -56,18 +65,54 @@
       border-left: 1px solid black;
       height: 200px;
     }
+
+    @media (max-width: 992px) {
+      margin: 30px 20px;
+      padding: 30px 20px;
+    }
+
+    @media (max-width: 576px) {
+      margin: 20px 10px;
+      padding: 20px 12px;
+
+      .vl {
+        display: none;
+      }
+    }
   }
 
   .treatment-list {
     margin: 50px;
     margin-bottom: 100px;
     .treatment-list-container {
-      grid-template-columns: repeat(
-        4,
-        1fr
-      ); // This will create 4 equal-width columns
-      gap: 30px; // Adjust the gap between items as needed
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
       display: grid;
+
+      @media (max-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      @media (max-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      margin: 30px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 576px) {
+      margin: 16px;
+      margin-bottom: 40px;
     }
   }
 }

@@ -1,71 +1,88 @@
-.review-container{
-    background: #efffe5;
-    .review-card{
-        background: white;
-        border-radius: 20px;
-        width: 50% !important;
-        margin-top: 60px;
-        margin-bottom: 60px;
-        padding: 40px 60px;
-        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),0 6px 20px 0 rgba(0, 0, 0, 0.19),0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        p{
-            display: -webkit-box;
-            max-height: 80px;
-            -webkit-line-clamp: 3; /* Adjust as needed */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            align-items: start;
-        }
-        .review-img-container{
-            border-radius: 50%;
-            height: 100px;
-            width: 100px;
-            padding: 5px 10px;
-            background: green;
-            h1{
-                color: white;
-            }
-        }
-    }
-}
-/* YourComponent.css */
+.review-container {
+  background: #efffe5;
 
-/* Style for the container of the slider */
+  .review-card {
+    background: white;
+    border-radius: 20px;
+    width: 50% !important;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 40px 60px;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    p {
+      display: -webkit-box;
+      max-height: 80px;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      align-items: start;
+    }
+
+    .review-img-container {
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      padding: 5px 10px;
+      background: green;
+      h1 {
+        color: white;
+      }
+    }
+
+    @media (max-width: 992px) {
+      width: 70% !important;
+      padding: 30px 40px;
+    }
+
+    @media (max-width: 768px) {
+      width: 85% !important;
+      padding: 24px 28px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 480px) {
+      width: 92% !important;
+      padding: 20px 16px;
+      border-radius: 14px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+  }
+}
+
 .slider-container {
-    position: relative; /* Ensure the container has a position value other than 'static' */
-    width: 100%; /* Set the width as needed */
-  }
-  
-  /* Style for the dots */
-  .slick-dots {
-    position: absolute;
-    bottom: 10px; /* Adjust the distance from the bottom as needed */
-    display: flex;
-    justify-content: center;
-    width: 100%; /* Make the dots cover the entire width of the parent */
-  }
-  
-  /* Style for individual dot */
-  .slick-dots li {
-    margin: 0 5px; /* Adjust the space between dots as needed */
-  }
-  
-  /* Style for dot's indicator */
-  .slick-dots li button {
-    font-size: 16px; /* Adjust the font size as needed */
-    width: 20px; /* Set the width of each dot */
-    height: 20px; /* Set the height of each dot */
-    border-radius: 50%; /* Make the dots round */
-    background-color: #333; /* Set the background color of the dot */
-    border: 2px solid #fff; /* Set the border of the dot */
-    outline: none; /* Remove the default outline */
-    opacity: 0.7; /* Adjust the opacity of the inactive dots */
-  }
-  
-  /* Style for active dot */
-  .slick-dots li.slick-active button {
-    background-color: #fff; /* Set the background color of the active dot */
-    opacity: 1; /* Set the opacity of the active dot */
-  }
-  
+  position: relative;
+  width: 100%;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.slick-dots li {
+  margin: 0 5px;
+}
+
+.slick-dots li button {
+  font-size: 16px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  border: 2px solid #fff;
+  outline: none;
+  opacity: 0.7;
+}
+
+.slick-dots li.slick-active button {
+  background-color: #fff;
+  opacity: 1;
+}

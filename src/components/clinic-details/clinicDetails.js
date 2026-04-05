@@ -25,12 +25,12 @@ const ClinicDetails = () => {
 
   return (
     <div className="clinic-details-container">
-      <h1 className="text-start my-5 ms-5 fw-bold">{clinicDetails?.name}</h1>
-      <div className="d-flex justify-content-between w-100">
-        <div className="clinic-location w-100 mx-5">
-          <h4 className="text-start mb-5">Expert Dental Care</h4>
+      <h1 className="text-start my-4 my-md-5 ms-2 ms-md-5 fw-bold">{clinicDetails?.name}</h1>
+      <div className="d-flex flex-column flex-md-row justify-content-between w-100">
+        <div className="clinic-location w-100 mx-2 mx-md-5">
+          <h4 className="text-start mb-3 mb-md-5">Expert Dental Care</h4>
           <div className="d-flex">
-            <p className="me-5">Address:</p>
+            <p className="me-3 me-md-5">Address:</p>
             <p className="text-start">{clinicDetails.address}</p>
           </div>
           <div className="clinic-img">
@@ -38,7 +38,7 @@ const ClinicDetails = () => {
           </div>
         </div>
         <div className="vl" />
-        <div className="clinic-timings w-100 mx-5">
+        <div className="clinic-timings w-100 mx-2 mx-md-5">
           <h4 className="text-start">OPD Hours</h4>
           <hr />
           <div>

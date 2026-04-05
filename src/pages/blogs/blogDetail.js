@@ -19,7 +19,7 @@ const BlogDetail = () => {
           <img src={blogData?.image_url} alt={blogData?.title} />
         </div>
         <div className="blog-content mx-auto mt-5">
-          <p>{blogData?.long_desc}</p>
+          <p className="text-start">{blogData?.long_desc}</p>
         </div>
       </div>
     </div>
