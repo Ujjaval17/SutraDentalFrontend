@@ -8,6 +8,26 @@ import { useLocation, useNavigate } from "react-router";
 import { blogsPattern, getBlogDetailRoute } from "../../Routes";
 import axios from "axios";
 import API from "../../config";
+import Skeleton from "@mui/material/Skeleton";
+
+const BlogCardSkeleton = () => (
+  <div className="blog-card blog-card--skeleton w-100">
+    <div className="blog-img-container">
+      <Skeleton variant="rectangular" width="100%" height="100%" animation="wave" />
+    </div>
+    <div className="blog-content">
+      <Skeleton height={28} width="88%" sx={{ mt: 2, mb: 1 }} animation="wave" />
+      <Skeleton animation="wave" />
+      <Skeleton width="92%" animation="wave" />
+      <Skeleton width="65%" animation="wave" />
+    </div>
+    <Skeleton height={1} sx={{ mx: 2 }} />
+    <div className="d-flex read-more justify-content-between px-3 pb-3">
+      <Skeleton width={100} height={20} animation="wave" />
+      <Skeleton width={80} height={20} animation="wave" />
+    </div>
+  </div>
+);
 
 const Blogs = (props) => {
   const [openAddBlogModal, setOpenAddBlogModal] = useState(false);
@@ -19,6 +39,7 @@ const Blogs = (props) => {
     date: "",
   });
   const [blogList, setBlogList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -41,6 +62,8 @@ const Blogs = (props) => {
       setBlogList(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,51 +80,86 @@ const Blogs = (props) => {
         {props.page === "home" ? "Our latest blogs" : "Health blogs"}
       </h1>
       <div className="blog-container mx-5 mb-5">
-        {blogList?.length ? (props.page === "home" ? blogList?.filter((element,i)=> i< 4)?.map((item, index) => (
-          <div className="blog-card w-100" onClick={()=> navigate(getBlogDetailRoute(item?.title?.trim()),{state:item})}>
-            <div className="blog-img-container">
-              <img src={item?.image_url} alt="" />
-            </div>
-            <div className="blog-content">
-              <h4 className="text-start" style={{ whiteSpace: "pre-line" }}>
-                {item?.title}
-              </h4>
-              <p className="text-start">{item?.short_desc}</p>
-            </div>
-            <hr />
-            <div className="d-flex read-more justify-content-between">
-              <span className="">
-                Read more <FaArrowRightLong />
-              </span>
-              <span className="d-flex align-items-center gap-2">
-                <FaRegCalendarDays />
-                {item?.date}
-              </span>
-            </div>
-          </div>
-        )) : blogList?.map((item, index) => (
-          <div className="blog-card w-100" onClick={()=> navigate(getBlogDetailRoute(item?.title?.trim()),{state:item})}>
-            <div className="blog-img-container">
-              <img src={item?.image_url} alt="" />
-            </div>
-            <div className="blog-content">
-              <h4 className="text-start" style={{ whiteSpace: "pre-line" }}>
-                {item?.title}
-              </h4>
-              <p className="text-start">{item?.short_desc}</p>
-            </div>
-            <hr />
-            <div className="d-flex read-more justify-content-between">
-              <span className="">
-                Read more <FaArrowRightLong />
-              </span>
-              <span className="d-flex align-items-center gap-2">
-                <FaRegCalendarDays />
-                {item?.date}
-              </span>
-            </div>
-          </div>
-        )) ) : <p>No Blogs Available</p>}
+        {loading ? (
+          <>
+            {Array.from(
+              { length: props.page === "home" ? 4 : 8 },
+              (_, i) => (
+                <BlogCardSkeleton key={i} />
+              )
+            )}
+          </>
+        ) : blogList?.length ? (
+          props.page === "home" ? (
+            blogList
+              ?.filter((element, i) => i < 4)
+              ?.map((item) => (
+                <div
+                  key={item._id || item.title}
+                  className="blog-card w-100"
+                  onClick={() =>
+                    navigate(getBlogDetailRoute(item?.title?.trim()), {
+                      state: item,
+                    })
+                  }
+                >
+                  <div className="blog-img-container">
+                    <img src={item?.image_url} alt="" />
+                  </div>
+                  <div className="blog-content">
+                    <h4 className="text-start" style={{ whiteSpace: "pre-line" }}>
+                      {item?.title}
+                    </h4>
+                    <p className="text-start">{item?.short_desc}</p>
+                  </div>
+                  <hr />
+                  <div className="d-flex read-more justify-content-between">
+                    <span>
+                      Read more <FaArrowRightLong />
+                    </span>
+                    <span className="d-flex align-items-center gap-2">
+                      <FaRegCalendarDays />
+                      {item?.date}
+                    </span>
+                  </div>
+                </div>
+              ))
+          ) : (
+            blogList?.map((item) => (
+              <div
+                key={item._id || item.title}
+                className="blog-card w-100"
+                onClick={() =>
+                  navigate(getBlogDetailRoute(item?.title?.trim()), {
+                    state: item,
+                  })
+                }
+              >
+                <div className="blog-img-container">
+                  <img src={item?.image_url} alt="" />
+                </div>
+                <div className="blog-content">
+                  <h4 className="text-start" style={{ whiteSpace: "pre-line" }}>
+                    {item?.title}
+                  </h4>
+                  <p className="text-start">{item?.short_desc}</p>
+                </div>
+                <hr />
+                <div className="d-flex read-more justify-content-between">
+                  <span>
+                    Read more <FaArrowRightLong />
+                  </span>
+                  <span className="d-flex align-items-center gap-2">
+                    <FaRegCalendarDays />
+                    {item?.date}
+                  </span>
+                </div>
+              </div>
+            ))
+          )
+        ) : (
+          <p>No Blogs Available</p>
+        )}
       </div>
       <div className="addBlog my-5">
         { path === "/blogs" ? <></> : <button onClick={()=> navigate(blogsPattern)}>See more blogs</button>}

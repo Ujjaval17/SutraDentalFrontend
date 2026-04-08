@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./footer.scss";
-import { IoLocationSharp, IoMailSharp } from "react-icons/io5";
+import {
+  IoLocationSharp,
+  IoMailSharp,
+  IoLogoInstagram,
+  IoLogoWhatsapp,
+} from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import API from "../../config";
@@ -37,33 +42,61 @@ const Footer = () => {
       <div className="footer-columns">
         <div className="w-100">
           <h4 className="text-start mb-4 footer-title">Contact Us</h4>
-          <div
-            className="d-flex justify-content-between gap-3 mb-3 footer-link"
-            onClick={() =>
-              window.open(
-                "https://maps.google.com/?q=2nd+floor+star+plaza+Ahmedabad-Mehsana+highway+Opp+sharda+petroleum+Chandkheda+Ahmedabad+382424",
-                "_blank",
-              )
-            }
-          >
-            <span>
-              <IoLocationSharp />
-            </span>
-            <p className="text-start fw-bold">
-              2nd floor, star plaza, Ahmedabad-Mehsana highway, Opp sharda
-              petroleum, Chandkheda, Ahmedabad-382424.
-            </p>
-          </div>
-          <div className="d-flex align-items-center gap-3">
-            <span>
-              <IoMailSharp />
-            </span>
-            <a
-              href="mailto:dentalsutra@gmail.com"
-              className="footer-email fw-bold"
+          <div className="footer-contact">
+            <div
+              className="d-flex justify-content-between gap-3 footer-link"
+              onClick={() =>
+                window.open(
+                  "https://maps.google.com/?q=2nd+floor+star+plaza+Ahmedabad-Mehsana+highway+Opp+sharda+petroleum+Chandkheda+Ahmedabad+382424",
+                  "_blank",
+                )
+              }
             >
-              dentalsutra@gmail.com
-            </a>
+              <span className="footer-contact__icon">
+                <IoLocationSharp />
+              </span>
+              <p className="text-start fw-bold mb-0">
+                2nd floor, star plaza, Ahmedabad-Mehsana highway, Opp sharda
+                petroleum, Chandkheda, Ahmedabad-382424.
+              </p>
+            </div>
+            <div className="d-flex align-items-center gap-3">
+              <span className="footer-contact__icon">
+                <IoMailSharp />
+              </span>
+              <a
+                href="mailto:dentalsutra@gmail.com"
+                className="footer-email fw-bold"
+              >
+                dentalsutra@gmail.com
+              </a>
+            </div>
+            <div className="d-flex align-items-center gap-3">
+              <span className="footer-contact__icon">
+                <IoLogoInstagram />
+              </span>
+              <a
+                href="https://www.instagram.com/sutra_dental/"
+                className="footer-email fw-bold"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+            </div>
+            <div className="d-flex align-items-center gap-3">
+              <span className="footer-contact__icon">
+                <IoLogoWhatsapp />
+              </span>
+              <a
+                href="https://wa.me/918010556229"
+                className="footer-email fw-bold"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp · 8010556229
+              </a>
+            </div>
           </div>
         </div>
         <div className="footer-inner-columns">

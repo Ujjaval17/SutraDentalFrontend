@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+/* Shared surfaces: light indigo nav/footer (solid, not transparent) */
+:root {
+  --nav-footer-bg: #e8eaf6;
+  --nav-footer-text: #141414;
+  --nav-footer-border: #c5cae9;
+  --nav-footer-link-hover: #303f9f;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

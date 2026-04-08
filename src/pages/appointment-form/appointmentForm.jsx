@@ -3,6 +3,7 @@ import "./appointmentForm.scss";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API from "../../config";
 
 const EMPTY_FORM = {
   name: "",
@@ -30,7 +31,7 @@ const AppointmentForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/book-appointment", formData);
+      await axios.post(`${API}/book-appointment`, formData);
       toast.success("Your appointment has been booked successfully!");
       setFormData(EMPTY_FORM);
     } catch (error) {

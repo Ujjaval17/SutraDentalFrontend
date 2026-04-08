@@ -1,13 +1,14 @@
 import React from "react";
-import "./about.scss"
+import "./about.scss";
 import Faqs from "../../components/faqs/faqs";
+import aboutDoctorPhoto from "../../images/about-doctor.png";
 
 const About = () => {
   return (
     <div className="about-container">
       <div className="about-flex">
-        <div className="about-img-container d-flex justify-content-center align-items-center col-md-4">
-          <img src="https://drkushbhusingh.getmy.clinic/_next/image?url=https%3A%2F%2Fremedoapp.com%2Farogya%2Fv1.0%2Fimages%2Fdoctors%2Ffvbmcopxtssrhjpspcczttq.jpeg&w=640&q=75" alt="Dr. Khushbu Singh" />
+        <div className="about-img-container col-md-4">
+          <img src={aboutDoctorPhoto} alt="Dr. Khushbu Singh" />
         </div>
         <div className="about-text w-120 text-start col-md-7 mt-3 mt-md-5 pe-0 pe-md-5">
           <h3>Dr. Khushbu Singh</h3>

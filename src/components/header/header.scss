@@ -1,3 +1,58 @@
+.header-brand {
+  gap: 10px;
+
+  @media (max-width: 480px) {
+    gap: 6px;
+  }
+}
+
+/*
+ * Desktop / tablet: unchanged logo sizing (lockup readable).
+ * Narrow screens only: chip + img scale inside parent (see max-width: 600px).
+ */
+/* No opaque fill behind the img — multiply must blend with the AppBar, not a solid chip. */
+.header-logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+
+  @media (max-width: 600px) {
+    flex-shrink: 1;
+    max-width: 100%;
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+}
+
+.header-logo-graphic {
+  display: block;
+  height: 100px;
+  width: auto;
+  max-width: min(220px, 46vw);
+  object-fit: contain;
+  object-position: left center;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    height: 60px;
+    max-width: min(190px, 50vw);
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    height: auto;
+    max-height: 52px;
+    max-width: 100%;
+    object-position: center center;
+  }
+}
+
 .avatar {
   background: white;
   height: 40px;
@@ -13,5 +68,7 @@
 }
 
 .MuiAppBar-root {
-  background-color: black !important; // Soft navy blue
+  background-color: var(--nav-footer-bg) !important;
+  color: var(--nav-footer-text) !important;
+  box-shadow: 0 1px 0 var(--nav-footer-border) !important;
 }

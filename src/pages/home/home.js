@@ -5,6 +5,8 @@ import Blogs from "../blogs/blog";
 import AllTreatmentsComponent from "../../components/treatment-card/AllTreatmentsComponent";
 import Banner from "../../components/banner/banner";
 import AppointmentForm from "../appointment-form/appointmentForm";
+import SmileExperts from "../../components/smile-experts/SmileExperts";
+import HomeClinicSection from "../../components/home-clinic/HomeClinicSection";
 
 const Home = () => {
   const location = useLocation();
@@ -22,7 +24,9 @@ const Home = () => {
     <div className="home-main-container">
       <Banner />
       <AllTreatmentsComponent isDashboard={true} />
+      <HomeClinicSection />
       <AppointmentForm />
+      <SmileExperts />
       <Blogs page={"home"} />
     </div>
   );

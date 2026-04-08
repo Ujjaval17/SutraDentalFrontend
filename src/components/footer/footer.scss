@@ -1,7 +1,8 @@
 .footer-container {
-  background: black;
-  color: white;
+  background: var(--nav-footer-bg);
+  color: var(--nav-footer-text);
   padding: 40px 150px;
+  border-top: 1px solid var(--nav-footer-border);
 
   @media (max-width: 992px) {
     padding: 30px 40px;
@@ -45,18 +46,49 @@
     cursor: pointer;
     transition: color 0.2s;
     &:hover {
-      color: #90caf9;
+      color: var(--nav-footer-link-hover);
     }
   }
 
   .footer-email {
-    color: white;
+    color: var(--nav-footer-text);
     text-decoration: none;
 
     &:hover {
-      color: #90caf9;
+      color: var(--nav-footer-link-hover);
       text-decoration: underline;
     }
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 420px;
+
+    @media (max-width: 768px) {
+      max-width: none;
+    }
+
+    @media (max-width: 480px) {
+      gap: 0.9rem;
+    }
+  }
+
+  .footer-contact__icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.35rem;
+    min-height: 1.35rem;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .footer-contact > .footer-link .footer-contact__icon {
+    align-self: flex-start;
+    margin-top: 0.2rem;
   }
 
   .footer-columns {
