@@ -80,10 +80,10 @@ function ResponsiveAppBar() {
     },
   });
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
@@ -110,7 +110,7 @@ function ResponsiveAppBar() {
 
   return (
     <ThemeProvider theme={theme}>
-    <AppBar style={{ zIndex: 100 }} position="sticky" elevation={0} color="default">
+    <AppBar component="header" style={{ zIndex: 100 }} position="sticky" elevation={0} color="default">
       <Container maxWidth="xl" sx={{ px: { xs: 1, sm: 2, md: 3 } }}>
         <Toolbar
           disableGutters
@@ -153,7 +153,7 @@ function ResponsiveAppBar() {
             }}
           >
             <span className="header-logo-wrap">
-              <img src={Logo} alt="" className="header-logo-graphic" />
+              <img src={Logo} alt="Sutra Dental logo" className="header-logo-graphic" width={48} height={48} />
             </span>
           </Box>
 

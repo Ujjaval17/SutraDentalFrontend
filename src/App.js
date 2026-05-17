@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import {
@@ -12,45 +12,62 @@ import {
   treatmentDetailPattern,
 } from "./Routes";
 import ResponsiveAppBar from "./components/header/header";
-import Home from "./pages/home/home";
 import Footer from "./components/footer/footer";
-import About from "./pages/about/about";
-import AllTreatments from "./pages/all-treatments/allTreatments";
-import Blogs from "./pages/blogs/blog";
-import BlogDetail from "./pages/blogs/blogDetail";
-import TreatmentDetail from "./pages/all-treatments/treatmentDetail";
-import AdminPanel from "./pages/admin-panel/adminPanel";
-import Login from "./components/login/login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
+import PageLoader from "./components/seo/PageLoader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+const Home = React.lazy(() => import("./pages/home/home"));
+const About = React.lazy(() => import("./pages/about/about"));
+const AllTreatments = React.lazy(() => import("./pages/all-treatments/allTreatments"));
+const Blogs = React.lazy(() => import("./pages/blogs/blog"));
+const BlogDetail = React.lazy(() => import("./pages/blogs/blogDetail"));
+const TreatmentDetail = React.lazy(() => import("./pages/all-treatments/treatmentDetail"));
+const Login = React.lazy(() => import("./components/login/login"));
+const AdminPanel = React.lazy(() => import("./pages/admin-panel/adminPanel"));
+const NotFound = React.lazy(() => import("./pages/NotFound/NotFound"));
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <ScrollToTop />
         <ResponsiveAppBar />
-        <Routes>
-          <Route path={indexPattern} element={<Home />} />
-          <Route path={aboutPattern} element={<About />} />
-          <Route path={blogsPattern} element={<Blogs />} />
-          <Route path={allTreatmentsPattern} element={<AllTreatments />} />
-          <Route path={blogDetailPattern} element={<BlogDetail />} />
-          <Route path={treatmentDetailPattern} element={<TreatmentDetail />} />
-          <Route path={loginPattern} element={<Login />} />
-          <Route
-            path={adminPanelPattern}
-            element={
-              <ProtectedRoute>
-                <AdminPanel />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+        <main id="main-content" role="main">
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path={indexPattern} element={<Home />} />
+              <Route path={aboutPattern} element={<About />} />
+              <Route path={blogsPattern} element={<Blogs />} />
+              <Route path={allTreatmentsPattern} element={<AllTreatments />} />
+              <Route path={blogDetailPattern} element={<BlogDetail />} />
+              <Route path={treatmentDetailPattern} element={<TreatmentDetail />} />
+              <Route path={loginPattern} element={<Login />} />
+              <Route
+                path={adminPanelPattern}
+                element={
+                  <ProtectedRoute>
+                    <AdminPanel />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </main>
         <Footer />
-        <ToastContainer position="top-right" autoClose={4000} hideProgressBar={false} closeOnClick pauseOnHover />
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+        />
       </Router>
     </div>
   );

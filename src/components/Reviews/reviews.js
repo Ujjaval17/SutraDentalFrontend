@@ -4,7 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GoogleReviewLogo from "../../images/GoogleReview.svg";
 import { FaStar } from "react-icons/fa";
-import "./reviews.scss"
+import "./reviews.scss";
+import { GOOGLE_REVIEWS } from "../../seo/reviewsData";
+import { BUSINESS } from "../../seo/siteConfig";
 
 const Reviews = () => {
   const settings = {
@@ -18,55 +20,25 @@ const Reviews = () => {
     autoplaySpeed: 3000,
   };
 
-  const googleReviews = [
-    {
-      name: "Mandar Gaikwad",
-      image:'',
-      rating: 5,
-      description:
-        "I went here for teeth cleaning and a regular checkup. Their staff is too gentle and perfect & I had a great experience. I’ll surely visit regularly at Expert Dental Care Clinic. Thank you Dr. Khushbu for a great experience",
-    },
-    {
-      name: "Prajakta Ghodake",
-      image:'',
-      rating: 5,
-      description:
-        "This clinic is really good all dental related issues. I recently had a root canal treatment at experts dental care and I am impressed the clinic was clean and well equipped.Dr khushbu has good experience & is skilled in her practice thank you team experts dental care.🙏",
-    },
-    {
-      name: "vishal shinde",
-      image:'',
-      rating: 5,
-      description:
-        "I had an excellent experience at Expert dental care clinic. The staff was friendly and welcoming, and the clinic was clean and modern. Dr. Khushbu was knowledgeable and explained everything clearly. The hygienist was thorough and provided useful tips. The entire team was caring and professional. I highly recommend this clinic for exceptional service and a pleasant dental visit",
-    },
-    {
-      name: "Harshad Pawar",
-      image:'',
-      rating: 5,
-      description:
-        "Very good clinic. Very well maintained and with good equipment. Dr. Khushbu has good experience and is skilled in her practice. Highly recommended for all kinds of dental treatment at affordable price!",
-    },
-    {
-      name: "Vinita Kalamkar",
-      image:'',
-      rating: 5,
-      description:
-        "I recently had dental surgery at this clinic, treatment given was very nice. Dr Khushboo explained all the procedure very well. All the procedure & service professionally done. Highely recommended.",
-    },
-  ];
+  const googleReviews = GOOGLE_REVIEWS;
 
   return (
-    <div className="review-container slider-container container-fluid">
+    <section
+      className="review-container slider-container container-fluid"
+      aria-labelledby="reviews-heading"
+    >
+      <h2 id="reviews-heading" className="reviews-section-title">
+        Patient reviews — Sutra Dental, Chandkheda
+      </h2>
       <Slider {...settings}>
         {googleReviews?.map((item, index) => (
           <div className="review-card text-center" key={index}>
             <div className="m-auto">
-                <img className="m-auto" width={100} src={GoogleReviewLogo} alt="" />
+                <img className="m-auto" width={100} src={GoogleReviewLogo} alt="Google reviews" />
             </div>
             <div className="review-img-container d-flex justify-content-center align-items-center mx-auto my-4">
                 {
-                    item?.image ? <img src={item.image} alt={item.name} /> : <h1 className="m-auto">{item?.name[0]}</h1>
+                    item?.image ? <img src={item.image} alt={item.name} /> : <span className="review-initial m-auto">{item?.name[0]}</span>
                 }
             </div>
             <h4 className="mx-auto">{item?.name}</h4>
@@ -83,7 +55,18 @@ const Reviews = () => {
           </div>
         ))}
       </Slider>
-    </div>
+      {BUSINESS.googleBusinessUrl && (
+        <p className="reviews-cta text-center mt-3">
+          <a
+            href={`${BUSINESS.googleBusinessUrl.replace(/\/$/, "")}/review`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Share your experience on Google
+          </a>
+        </p>
+      )}
+    </section>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 import {
   IoLocationSharp,
@@ -6,7 +7,6 @@ import {
   IoLogoInstagram,
   IoLogoWhatsapp,
 } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import API from "../../config";
 import {
@@ -17,7 +17,6 @@ import {
 } from "../../Routes";
 
 const Footer = () => {
-  const navigate = useNavigate();
   const [treatmentsList, setTreatmentsList] = useState([]);
 
   useEffect(() => {
@@ -33,46 +32,36 @@ const Footer = () => {
     { label: "Health Blog", path: blogsPattern },
   ];
 
-  const handleTreatmentClick = (treatment) => {
-    navigate(getTreatmentDetailRoute(treatment._id), { state: treatment });
-  };
-
   return (
-    <div className="footer-container">
+    <footer className="footer-container">
       <div className="footer-columns">
         <div className="w-100">
-          <h4 className="text-start mb-4 footer-title">Contact Us</h4>
-          <div className="footer-contact">
-            <div
-              className="d-flex justify-content-between gap-3 footer-link"
-              onClick={() =>
-                window.open(
-                  "https://maps.google.com/?q=2nd+floor+star+plaza+Ahmedabad-Mehsana+highway+Opp+sharda+petroleum+Chandkheda+Ahmedabad+382424",
-                  "_blank",
-                )
-              }
-            >
-              <span className="footer-contact__icon">
+          <h2 className="text-start mb-4 footer-title h4">Contact Us</h2>
+          <address className="footer-contact not-italic">
+            <div className="d-flex justify-content-between gap-3 footer-link">
+              <span className="footer-contact__icon" aria-hidden>
                 <IoLocationSharp />
               </span>
-              <p className="text-start fw-bold mb-0">
+              <a
+                href="https://maps.google.com/?q=2nd+floor+star+plaza+Ahmedabad-Mehsana+highway+Opp+sharda+petroleum+Chandkheda+Ahmedabad+382424"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-start fw-bold mb-0"
+              >
                 2nd floor, star plaza, Ahmedabad-Mehsana highway, Opp sharda
                 petroleum, Chandkheda, Ahmedabad-382424.
-              </p>
+              </a>
             </div>
             <div className="d-flex align-items-center gap-3">
-              <span className="footer-contact__icon">
+              <span className="footer-contact__icon" aria-hidden>
                 <IoMailSharp />
               </span>
-              <a
-                href="mailto:dentalsutra@gmail.com"
-                className="footer-email fw-bold"
-              >
+              <a href="mailto:dentalsutra@gmail.com" className="footer-email fw-bold">
                 dentalsutra@gmail.com
               </a>
             </div>
             <div className="d-flex align-items-center gap-3">
-              <span className="footer-contact__icon">
+              <span className="footer-contact__icon" aria-hidden>
                 <IoLogoInstagram />
               </span>
               <a
@@ -85,7 +74,7 @@ const Footer = () => {
               </a>
             </div>
             <div className="d-flex align-items-center gap-3">
-              <span className="footer-contact__icon">
+              <span className="footer-contact__icon" aria-hidden>
                 <IoLogoWhatsapp />
               </span>
               <a
@@ -97,40 +86,43 @@ const Footer = () => {
                 WhatsApp · 8010556229
               </a>
             </div>
-          </div>
+          </address>
         </div>
-        <div className="footer-inner-columns">
+        <nav className="footer-inner-columns" aria-label="Footer navigation">
           <div>
-            <h4 className="mb-4 text-start footer-title">Quick Links</h4>
+            <h2 className="mb-4 text-start footer-title h4">Quick Links</h2>
             <ul className="text-start">
               {quickLinks.map((link) => (
-                <li
-                  key={link.label}
-                  className="mb-3 footer-link"
-                  onClick={() => navigate(link.path)}
-                >
-                  {link.label}
+                <li key={link.label} className="mb-3">
+                  <Link to={link.path} className="footer-link">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h4 className="mb-4 text-start footer-title">Our Treatments</h4>
+            <h2 className="mb-4 text-start footer-title h4">Our Treatments</h2>
             <ul className="text-start">
               {treatmentsList.map((treatment) => (
-                <li
-                  key={treatment._id}
-                  className="mb-3 footer-link"
-                  onClick={() => handleTreatmentClick(treatment)}
-                >
-                  {treatment.treatment_name}
+                <li key={treatment._id} className="mb-3">
+                  <Link
+                    to={getTreatmentDetailRoute(treatment._id)}
+                    state={treatment}
+                    className="footer-link"
+                  >
+                    {treatment.treatment_name}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
+        </nav>
       </div>
-    </div>
+      <p className="footer-copy">
+        <small>© {new Date().getFullYear()} Sutra Dental. All rights reserved.</small>
+      </p>
+    </footer>
   );
 };
 

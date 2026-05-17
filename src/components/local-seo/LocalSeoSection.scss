@@ -1,0 +1,142 @@
+.local-seo {
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+
+  &__inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 2rem;
+  }
+
+  h2 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: #252f4a;
+    margin-bottom: 0.75rem;
+  }
+
+  &__lead {
+    color: #475569;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__card {
+    background: #fff;
+    border: 1px solid rgba(37, 47, 74, 0.08);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
+  }
+
+  &__card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #252f4a;
+  }
+
+  &__text {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &__areas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      background: rgba(37, 47, 74, 0.08);
+      color: #252f4a;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+
+  &__address {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      font-size: 1.25rem;
+      color: #5c6bc0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(37, 47, 74, 0.15);
+    color: #252f4a;
+    background: #fff;
+
+    &:hover {
+      background: #f1f5f9;
+    }
+
+    &--primary {
+      background: #252f4a;
+      color: #fff;
+      border-color: #252f4a;
+
+      &:hover {
+        opacity: 0.92;
+        background: #252f4a;
+      }
+    }
+
+    &--review {
+      border-color: #4285f4;
+      color: #1a73e8;
+    }
+  }
+
+  &__footnote {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}

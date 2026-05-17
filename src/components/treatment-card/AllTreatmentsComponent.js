@@ -42,7 +42,7 @@ const AllTreatmentsComponent = ({ isDashboard }) => {
 
   return (
     <div className="treatment-list">
-      <h1 className="fw-bold text-start my-5">Treatments</h1>
+      <h2 className={`fw-bold text-start my-5 ${isDashboard ? "" : "h1"}`}>Dental treatments</h2>
       <div className="treatment-list-container">
         {loading ? (
           Array.from({ length: skeletonCount }, (_, i) => (

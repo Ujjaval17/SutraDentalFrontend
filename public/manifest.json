@@ -1,6 +1,8 @@
 {
   "short_name": "Sutra Dental",
-  "name": "Sutra Dental",
+  "name": "Sutra Dental — Chandkheda, Ahmedabad",
+  "description": "Premium dental care by Dr. Khushbu Singh",
+  "lang": "en-IN",
   "icons": [
     {
       "src": "favicon.png",
@@ -13,7 +15,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#252f4a",
   "background_color": "#ffffff"

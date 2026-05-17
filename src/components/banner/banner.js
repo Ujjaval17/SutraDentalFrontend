@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./banner.scss";
 import Image1 from "../../images/banner/image1.png";
 import Image3 from "../../images/banner/image3.png";
@@ -19,7 +18,7 @@ const Banner = () => {
   }, [images.length]);
 
   return (
-    <div className="banner-container">
+    <section className="banner-container" aria-label="Welcome to Sutra Dental">
       {images.map((image, index) => (
         <div
           key={index}
@@ -33,10 +32,13 @@ const Banner = () => {
               <br />
               Because your smile deserves luxury
             </p>
+            <p className="banner-location">
+              Dental clinic · Chandkheda, Ahmedabad
+            </p>
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

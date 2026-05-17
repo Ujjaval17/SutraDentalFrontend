@@ -1,21 +1,32 @@
-import React from 'react';
-import "./treatmentCard.scss"
-import { useNavigate } from 'react-router';
-import { getTreatmentDetailRoute } from '../../Routes';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./treatmentCard.scss";
+import { getTreatmentDetailRoute } from "../../Routes";
+import OptimizedImage from "../seo/OptimizedImage";
 
 const TreatmentCard = (props) => {
-    console.log(props.treatment,"hello treatment")
-    const navigate = useNavigate();
+  const { treatment } = props;
+  const name = treatment?.treatment_name || "Dental treatment";
+
   return (
-    <div onClick={()=>{navigate(getTreatmentDetailRoute(props?.treatment?._id), {state: props?.treatment})}} className='treatment-card cursor-pointer'>
-      <div className='treatment-img'>
-        <img className='my-auto' src={props?.treatment?.image_url} alt="" />
+    <Link
+      to={getTreatmentDetailRoute(treatment?._id)}
+      state={treatment}
+      className="treatment-card cursor-pointer"
+      aria-label={`Learn more about ${name}`}
+    >
+      <div className="treatment-img">
+        <OptimizedImage
+          className="my-auto"
+          src={treatment?.image_url}
+          alt={name}
+          loading="lazy"
+        />
       </div>
-      <h5 className='fw-bold'>{props?.treatment?.treatment_name}</h5>
-      <p>{props?.treatment?.short_desc}</p>
+      <h3 className="fw-bold h5">{name}</h3>
+      <p>{treatment?.short_desc}</p>
+    </Link>
+  );
+};
 
-    </div>
-  )
-}
-
-export default TreatmentCard
+export default TreatmentCard;

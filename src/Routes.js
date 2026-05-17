@@ -1,4 +1,5 @@
 import { generatePath } from "react-router";
+import { slugify } from "./seo/utils";
                                                
 export const indexPattern = "/";
 export const getIndexRoute = () => {
@@ -27,8 +28,9 @@ export const getBlogsRoute = () => {
 };
 
 export const blogDetailPattern = "/blogs/:slug";
-export const getBlogDetailRoute = (slug) => {
-    return generatePath(blogDetailPattern,{slug});
+export const getBlogDetailRoute = (slugOrTitle) => {
+    const slug = slugify(slugOrTitle);
+    return generatePath(blogDetailPattern, { slug });
 };
 
 export const treatmentDetailPattern = "/treatments/:slug";

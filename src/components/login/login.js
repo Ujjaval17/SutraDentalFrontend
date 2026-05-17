@@ -5,6 +5,8 @@ import API from "../../config";
 import "./login.scss";
 import { useNavigate } from "react-router";
 import { adminPanelPattern } from "../../Routes";
+import SEO from "../seo/SEO";
+import { getStaticSeo } from "../../seo/pageSeo";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -41,9 +43,17 @@ const Login = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const seo = getStaticSeo("login");
+
   return (
     <div className="login-container mb-4">
-      <h2>Login</h2>
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        canonicalPath={seo.path}
+        noindex
+      />
+      <h1 className="h2">Admin login</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>

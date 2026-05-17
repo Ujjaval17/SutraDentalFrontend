@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Private / non-indexable areas
+Disallow: /admin-panel
+Disallow: /login
+
+Sitemap: https://www.sutradental.com/sitemap.xml

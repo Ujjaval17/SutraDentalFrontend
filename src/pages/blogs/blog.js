@@ -4,11 +4,48 @@ import { FaRegCalendarDays } from "react-icons/fa6";
 import "./blog.scss";
 import Modal from "react-modal";
 import moment from "moment";
-import { useLocation, useNavigate } from "react-router";
-import { blogsPattern, getBlogDetailRoute } from "../../Routes";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { blogsPattern, getBlogDetailRoute, indexPattern } from "../../Routes";
+import SEO from "../../components/seo/SEO";
+import Breadcrumbs from "../../components/seo/Breadcrumbs";
+import OptimizedImage from "../../components/seo/OptimizedImage";
+import { getStaticSeo } from "../../seo/pageSeo";
+import { breadcrumbSchema } from "../../seo/schemas";
 import axios from "axios";
 import API from "../../config";
 import Skeleton from "@mui/material/Skeleton";
+
+const BlogCard = ({ item }) => (
+  <Link
+    to={getBlogDetailRoute(item?.title)}
+    state={item}
+    className="blog-card w-100"
+  >
+    <div className="blog-img-container">
+      <OptimizedImage
+        src={item?.image_url}
+        alt={item?.title || "Blog post"}
+        loading="lazy"
+      />
+    </div>
+    <div className="blog-content">
+      <h3 className="text-start h4" style={{ whiteSpace: "pre-line" }}>
+        {item?.title}
+      </h3>
+      <p className="text-start">{item?.short_desc}</p>
+    </div>
+    <hr />
+    <div className="d-flex read-more justify-content-between">
+      <span>
+        Read more <FaArrowRightLong aria-hidden />
+      </span>
+      <span className="d-flex align-items-center gap-2">
+        <FaRegCalendarDays aria-hidden />
+        <time dateTime={item?.date}>{item?.date}</time>
+      </span>
+    </div>
+  </Link>
+);
 
 const BlogCardSkeleton = () => (
   <div className="blog-card blog-card--skeleton w-100">
@@ -71,14 +108,32 @@ const Blogs = (props) => {
     fetchBlogList();
   }, []);
 
-  const path = useLocation()?.pathname
-
+  const path = useLocation()?.pathname;
+  const isHomeSection = props.page === "home";
+  const seo = getStaticSeo("blogs");
+  const breadcrumbs = [
+    { name: "Home", url: indexPattern },
+    { name: "Blogs", url: blogsPattern },
+  ];
 
   return (
     <>
-      <h1 className="fw-bold text-start my-5 ms-5">
-        {props.page === "home" ? "Our latest blogs" : "Health blogs"}
-      </h1>
+      {!isHomeSection && (
+        <>
+          <SEO
+            title={seo.title}
+            description={seo.description}
+            canonicalPath={seo.path}
+            jsonLd={breadcrumbSchema(breadcrumbs)}
+          />
+          <Breadcrumbs items={breadcrumbs} />
+        </>
+      )}
+      {isHomeSection ? (
+        <h2 className="fw-bold text-start my-5 ms-5">Our latest blogs</h2>
+      ) : (
+        <h1 className="fw-bold text-start my-5 ms-5">Dental health blogs</h1>
+      )}
       <div className="blog-container mx-5 mb-5">
         {loading ? (
           <>
@@ -93,69 +148,9 @@ const Blogs = (props) => {
           props.page === "home" ? (
             blogList
               ?.filter((element, i) => i < 4)
-              ?.map((item) => (
-                <div
-                  key={item._id || item.title}
-                  className="blog-card w-100"
-                  onClick={() =>
-                    navigate(getBlogDetailRoute(item?.title?.trim()), {
-                      state: item,
-                    })
-                  }
-                >
-                  <div className="blog-img-container">
-                    <img src={item?.image_url} alt="" />
-                  </div>
-                  <div className="blog-content">
-                    <h4 className="text-start" style={{ whiteSpace: "pre-line" }}>
-                      {item?.title}
-                    </h4>
-                    <p className="text-start">{item?.short_desc}</p>
-                  </div>
-                  <hr />
-                  <div className="d-flex read-more justify-content-between">
-                    <span>
-                      Read more <FaArrowRightLong />
-                    </span>
-                    <span className="d-flex align-items-center gap-2">
-                      <FaRegCalendarDays />
-                      {item?.date}
-                    </span>
-                  </div>
-                </div>
-              ))
+              ?.map((item) => <BlogCard key={item._id || item.title} item={item} />)
           ) : (
-            blogList?.map((item) => (
-              <div
-                key={item._id || item.title}
-                className="blog-card w-100"
-                onClick={() =>
-                  navigate(getBlogDetailRoute(item?.title?.trim()), {
-                    state: item,
-                  })
-                }
-              >
-                <div className="blog-img-container">
-                  <img src={item?.image_url} alt="" />
-                </div>
-                <div className="blog-content">
-                  <h4 className="text-start" style={{ whiteSpace: "pre-line" }}>
-                    {item?.title}
-                  </h4>
-                  <p className="text-start">{item?.short_desc}</p>
-                </div>
-                <hr />
-                <div className="d-flex read-more justify-content-between">
-                  <span>
-                    Read more <FaArrowRightLong />
-                  </span>
-                  <span className="d-flex align-items-center gap-2">
-                    <FaRegCalendarDays />
-                    {item?.date}
-                  </span>
-                </div>
-              </div>
-            ))
+            blogList?.map((item) => <BlogCard key={item._id || item.title} item={item} />)
           )
         ) : (
           <p>No Blogs Available</p>
