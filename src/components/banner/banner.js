@@ -27,11 +27,43 @@ const Banner = () => {
         >
           <div className="banner-content">
             <h1 className="banner-title">Sutra Dental</h1>
-            <p className="banner-description">
-              The Sutra of your smile
-              <br />
-              Because your smile deserves luxury
-            </p>
+            <div className="banner-description-row">
+              <span
+                className="banner-thread banner-thread--left"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 200 24"
+                  preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    className="banner-thread__path"
+                    d="M0 12 Q 25 2, 50 12 T 100 12 T 150 12 T 200 12"
+                    fill="none"
+                  />
+                  <circle className="banner-thread__needle" r="2.5" />
+                </svg>
+              </span>
+              <p className="banner-description">The Sutra of trust and care</p>
+              <span
+                className="banner-thread banner-thread--right"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 200 24"
+                  preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    className="banner-thread__path"
+                    d="M0 12 Q 25 22, 50 12 T 100 12 T 150 12 T 200 12"
+                    fill="none"
+                  />
+                  <circle className="banner-thread__needle" r="2.5" />
+                </svg>
+              </span>
+            </div>
             <p className="banner-location">
               Dental clinic · Chandkheda, Ahmedabad
             </p>

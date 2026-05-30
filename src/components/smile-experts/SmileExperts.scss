@@ -171,6 +171,36 @@
       }
     }
   }
+
+  &__highlights {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--experts-accent-soft);
+  }
+
+  &__highlights-title {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--experts-text);
+  }
+
+  &__highlights ul {
+    margin: 0;
+    padding: 0 0 0 1.25rem;
+    list-style: disc;
+
+    li {
+      margin-bottom: 0.65rem;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--experts-muted);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .expert-card--reverse {
